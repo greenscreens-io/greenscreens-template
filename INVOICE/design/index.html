@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8"/>	
+      <title>Demo app</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link href="<% root %>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="<% root %>/assets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="<% root %>/Invoice/assets/styles.css" rel="stylesheet" />
+      
+   </head>
+   <body class="scene">
+      <div class="container">
+         <!-- title row -->
+         <div class="row">
+            <div class="col-xs-12 invoice-header">
+               <h1>
+                  Invoice <small class="pull-right" style="padding-right: 20px;">Date: <% invoiceDate %></small>
+               </h1>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- info row -->
+         <div class="row invoice-info">
+            <div class="col-xs-6 invoice-col">
+               <div>
+                  To
+                  <address>
+                     <strong><% clientName %></strong>
+                     <br/><% clientStreet %>
+                     <br/><% clientCity %>
+                     <br/>Email: <% clientEmail %>
+                  </address>
+               </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6 invoice-col">
+               <div class="pull-right" style="padding-right: 35px;;text-align: right;">
+                  From
+                  <address>
+                     <strong><% companyName %></strong>
+                     <br/><% companyStreet %>
+                     <br/><% companyCity %>
+                     <br/>Email: <% companyEmail %>
+                  </address>
+               </div>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+         <div class="row invoice-info">
+            <div class="col-xs-6 invoice-col">
+               <div>
+                  <b>Invoice: #<% invoiceID %></b>
+                  <br/> <b>Order ID:</b> <% orderID %>
+                  <br/> <b>Payment Due:</b> <% paymentDue %>
+               </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6 invoice-col">
+               <div class="pull-right" style="text-align: right;">
+                  <b>SWIFT:</b> <% companySwift %>
+                  <br/> <b>IBAN:</b> <% companyIBAN %>
+                  <br/>
+               </div>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+
+         <br/>
+         <!-- Table row -->
+         <div class="row">
+            <div class="col-xs-12 table">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <th>Qty</th>
+                        <th>Product</th>
+                        <th style="width: 50%">Description</th>
+                        <th class="text-right">Discount (%)</th>
+                        <th class="text-right">Price </th>
+                        <th class="text-right">Subtotal </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <% records %>
+                  </tbody>
+                  <tfoot>
+                     <tr style="text-align: right;">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><b>Total:</b></td>
+                        <td> <% total %> &#128;</td>
+                     </tr>
+                  </tfoot>
+               </table>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-md-6 col-sm-6col-xs-12">
+                  <p class="lead">Payment Methods:</p>
+                  <img src="<% root %>/invoice/assets/img/visa.png" alt="Visa"/>
+                  <img src="<% root %>/invoice/assets/img/mastercard.png" alt="Mastercard"/>
+                  <img src="<% root %>/invoice/assets/img/american-express.png" alt="American Express"/>
+                  <img src="<% root %>/invoice/assets/img/paypal2.png" alt="Paypal"/>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">Invoice can be payed with direct bank transfer. Use payment code: <%orderID %>-<%invoiceID %></p>
+         </div>
+      </div>
+   </body>
+</html>

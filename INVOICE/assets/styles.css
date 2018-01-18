@@ -1,0 +1,41 @@
+html, body {
+	background: #f6f6f6;
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	line-height: normal !important;
+	color: #73879C;
+	font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.471;
+}
+
+body {
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+tfoot {
+	background: lightgrey;
+}
+
+@page {
+	size: A4;
+	margin: 0;
+	size: auto;
+}
+
+@page :left {
+	margin-left: 0.5cm;
+}
+
+@page :right {
+	margin-left: 0.5cm;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8"/>	
+      <title>Demo app</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link href="file:///Z:/GreenScreens/release/conf/templates/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="file:///Z:/GreenScreens/release/conf/templates/assets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="file:///Z:/GreenScreens/release/conf/templates/Invoice/assets/styles.css" rel="stylesheet" />
+      
+   </head>
+   <body class="scene">
+      <div class="container">
+         <!-- title row -->
+         <div class="row">
+            <div class="col-xs-12 invoice-header">
+               <h1>
+                  Invoice <small class="pull-right" style="padding-right: 20px;">Date: 01. 06. 2017.</small>
+               </h1>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- info row -->
+         <div class="row invoice-info">
+            <div class="col-xs-6 invoice-col">
+               <div>
+                  To
+                  <address>
+                     <strong>John Doe</strong>
+                     <br/>795 Freedom Ave, Suite 600
+                     <br/>New York, CA
+                     <br/>Email: john.doe@email.io
+                  </address>
+               </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6 invoice-col">
+               <div class="pull-right" style="padding-right: 35px;;text-align: right;">
+                  From
+                  <address>
+                     <strong>Acme, Ltd.</strong>
+                     <br/>Milton Street 10620
+                     <br/>10000 City, NOWHERELAND
+                     <br/>Email: info@acme.io
+                  </address>
+               </div>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+         <div class="row invoice-info">
+            <div class="col-xs-6 invoice-col">
+               <div>
+                  <b>Invoice: ##007612</b>
+                  <br/> <b>Order ID:</b> 4F3S8J
+                  <br/> <b>Payment Due:</b> 07. 06. 2017.
+               </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6 invoice-col">
+               <div class="pull-right" style="text-align: right;">
+                  <b>SWIFT:</b> GKT234234
+                  <br/> <b>IBAN:</b> QW 123456789012
+                  <br/>
+               </div>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+
+         <br/>
+         <!-- Table row -->
+         <div class="row">
+            <div class="col-xs-12 table">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <th>Qty</th>
+                        <th>Product</th>
+                        <th style="width: 50%">Description</th>
+                        <th class="text-right">Discount (%)</th>
+                        <th class="text-right">Price </th>
+                        <th class="text-right">Subtotal </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+   <td>1</td>
+   <td>Large license</td>
+   <td>Yearly access license for online services</td>
+   <td class="text-right">0.00</td>
+   <td class="text-right">120.00</td>
+   <td class="text-right">0.00</td>
+</tr>
+<tr>
+   <td>1</td>
+   <td>2yrs extension</td>
+   <td>Additional yearly license extension</td>
+   <td class="text-right">20.00</td>
+   <td class="text-right">240.00</td>
+   <td class="text-right">0.00</td>
+</tr>
+
+                  </tbody>
+                  <tfoot>
+                     <tr style="text-align: right;">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><b>Total:</b></td>
+                        <td> 322.00 &#128;</td>
+                     </tr>
+                  </tfoot>
+               </table>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-md-6 col-sm-6col-xs-12">
+                  <p class="lead">Payment Methods:</p>
+                  <img src="file:///Z:/GreenScreens/release/conf/templates/invoice/assets/img/visa.png" alt="Visa"/>
+                  <img src="file:///Z:/GreenScreens/release/conf/templates/invoice/assets/img/mastercard.png" alt="Mastercard"/>
+                  <img src="file:///Z:/GreenScreens/release/conf/templates/invoice/assets/img/american-express.png" alt="American Express"/>
+                  <img src="file:///Z:/GreenScreens/release/conf/templates/invoice/assets/img/paypal2.png" alt="Paypal"/>
+            </div>
+            <!-- /.col -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">Invoice can be payed with direct bank transfer. Use payment code: -</p>
+         </div>
+      </div>
+   </body>
+</html>

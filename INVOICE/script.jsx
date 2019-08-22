@@ -74,17 +74,14 @@ function onEndReport(file) {
    var data = JSON.stringify(spool);
    FileUtil.save(data, file.toString().replace('pdf','json'));
 
-   // Render will generate HTML from template and generated JSON
-   // then, report rendering will be submit to processing queue
-   // file is saved in different name as regular PDF can be also generated
-   // context.onReady(Exception, File) will be called by rendering engine
+   // 1. Render will generate HTML from template and generated JSON
+   // 2. Report rendering will be submited to the processing queue
+   // 3. File is saved with different name (regular PDF can be also generated)
    Render.process(this, template, spool, file.toString());
-
 }
 
-
 /**
- * Called every time new page processing is started 
+ * Called every time new page processing is started
  */
 function onStartPage() {}
 
@@ -96,7 +93,7 @@ function onEndPage() {
 }
 
 /**
- * Current line of text from spool file page
+ * Current line from spool file page
  */
 function onLine(page, line, position, overprint, text) {
    //print(text);
@@ -107,9 +104,9 @@ function onLine(page, line, position, overprint, text) {
  * Alternate file output name.
  * If set, driver will use that file for processing
  * Will wait up to 30 sec. for PDF to become available
- * if available, PDF wi9ll receive spool attributes
- * @returns String
+ * if available, PDF will receive spool attributes
+ * @return String
  */
 function getAlternateName() {
-  return altFile;	
+  return altFile;
 }

@@ -22,6 +22,8 @@ function onInit() {
    load(template+'/lib/parser.jsx');
    load(template+'/lib/render.jsx');
 
+   Parser.log = false;
+
    // 0 - off, 1 - on - driver
    return 1;
 }
@@ -73,7 +75,7 @@ function onEndReport(file) {
    FileUtil.save(data, file.toString().replace('pdf','json'));
 
    // Render will generate HTML from template and generated JSON
-   // then, report rendering will be submited to processing queue
+   // then, report rendering will be submit to processing queue
    // file is saved in different name as regular PDF can be also generated
    // context.onReady(Exception, File) will be called by rendering engine
    Render.process(this, template, spool, file.toString());
@@ -82,7 +84,7 @@ function onEndReport(file) {
 
 
 /**
- * Called every time new page processing is started
+ * Called every time new page processing is started 
  */
 function onStartPage() {}
 
@@ -98,6 +100,16 @@ function onEndPage() {
  */
 function onLine(page, line, position, overprint, text) {
    //print(text);
-   Parser.validate(text || '', spool, false);
+   Parser.validate(text || '', spool);
 }
 
+/**
+ * Alternate file output name.
+ * If set, driver will use that file for processing
+ * Will wait up to 30 sec. for PDF to become available
+ * if available, PDF wi9ll receive spool attributes
+ * @returns String
+ */
+function getAlternateName() {
+  return altFile;	
+}

@@ -22,20 +22,24 @@ var Parser = (function(){
 		  /**
 		   * Main function to parse given text line 
 		   */
-		  validate: function(v, obj, log) {
+		  validate: function(v, obj) {
 			  var me = this;
-
-			   log ? print('<<'+step): null;
-			   log ? print(text): null;	   
 			  
-			  if (typeof me['step' + step] === 'function' ) {
-				  step = step + me['step' + step](v, obj);
+			  me.log ? print('<<'+step): null;
+			  me.log ? print(v): null;
+			   
+			  var fn = me['step' + step];
+			  var isFn = typeof fn === 'function';
+			  			  
+			  if (isFn) {
+				  step = step + fn(v, obj);
 			  }			  
 			  
-			  log ? print('>>' + step): null;
+			  me.log ? print('>>' + step): null;
 		  },
 		  
 		  step0: function(v, obj){        		  
+			  
 	  		  if (v.indexOf('Invoice Date')>-1) {
 	  			  obj.invoiceDate = v.split(':')[1].trim();
 	  			  return 1;
@@ -43,7 +47,8 @@ var Parser = (function(){
 	  		  return 0;
 		  },
 		
-		  step1: function(v, obj){        		  
+		  step1: function(v, obj){        		 
+			  			  
 	  		  if (v.trim().indexOf('To') === 0 && v.trim().endsWith('From')) {        			  
 	  			  return 1;
 	  		  }
@@ -51,7 +56,9 @@ var Parser = (function(){
 		  },
 		  
 		  step2: function(v, obj){
-			      var t = v.trim().replace(/  +/g, '≈Å').split('≈Å');
+			  
+			  var t = v.trim().replace(/  +/g, '£').split('£');
+			  
 			  if (t.length>1) {
 	  		      obj.clientName = t[0].trim();
 	  		      obj.companyName = t[1].trim();
@@ -59,9 +66,11 @@ var Parser = (function(){
 			  } 
 			  return 0;
 		  },
-		  
+		  		  
 		  step3: function(v, obj){
-			  var t = v.trim().replace(/  +/g, '≈Å').split('≈Å');
+			  			  
+			  var t = v.trim().replace(/  +/g, '£').split('£');
+			  
 			  if (t.length>1) {
 				  obj.clientStreet = t[0].trim();
 	  		      obj.companyStreet = t[1].trim();
@@ -70,18 +79,23 @@ var Parser = (function(){
 			  return 0;
 		  },
 		  
-		  step4: function(v, obj){
-			  var t = v.trim().replace(/  +/g, '≈Å').split('≈Å');
+		  step4: function(v, obj) {
+			  			  
+			  var t = v.trim().replace(/  +/g, '£').split('£');
+			  
 			  if (t.length>1) {
 				  obj.clientCity = t[0].trim();
 	  		      obj.companyCity = t[1].trim();
 				  return 1;
 			  } 
+			  
 			  return 0;			
 		  },
 		  
-		  step5: function(v, obj){
-			  var t = v.replace(/: /g, ':').replace(/ +/g, '≈Å').split('≈Å');
+		  step5: function(v, obj) {
+			  			  
+			  var t = v.replace(/: /g, ':').replace(/ +/g, '£').split('£');
+			  
 			  if (t.length>1) {
 	  		      obj.clientEmail = t[0].split(':')[1].trim();
 	  		      obj.companyEmail = t[1].split(':')[1].trim();
@@ -90,8 +104,10 @@ var Parser = (function(){
 			  return 0;
 		  },
 		  
-		  step6: function(v, obj){
-			  var t = v.replace(/: /g, ':').replace(/ +/g, '≈Å').split('≈Å');
+		  step6: function(v, obj) {
+			  			  
+			  var t = v.replace(/: /g, ':').replace(/ +/g, '£').split('£');
+			  
 			  if (t.length>1) {
 	  		      obj.invoiceID = t[0].split(':')[1].trim();
 	  		      obj.companySwift = t[1].split(':')[1].trim();
@@ -100,8 +116,10 @@ var Parser = (function(){
 			  return 0;
 		  },
 		  
-		  step7: function(v, obj){
-			  var t = v.replace(/: /g, ':').replace(/  +/g, '≈Å').split('≈Å');
+		  step7: function(v, obj) {
+			  
+			  var t = v.replace(/: /g, ':').replace(/  +/g, '£').split('£');
+			  
 			  if (t.length>1) {
 	  		      obj.orderID = t[0].split(':')[1].trim();
 	  		      obj.companyIBAN = t[1].split(':')[1].trim();
@@ -110,28 +128,33 @@ var Parser = (function(){
 			  return 0;
 		  },
 		  
-		  step8: function(v, obj){
+		  step8: function(v, obj) {
+			  
 			  obj.paymentDue = v.split(':')[1].trim();
+			  
 			  return 1;
 		  },
 		  
 		  step9: function(v, obj){
+			  			  
 			  if (v.indexOf('--------------')>-1) {
 				  return 1;
 			  }
+			  
 			  return 0;
 		  },   		 
-		  
-		  step10: function(v, obj){
-			  return this.step9(v, obj);    		  
+
+		  step10: function(v, obj) {
+			  return module.step9(v, obj);    		  
 		  },
 		  
 		  step11: function(v, obj){
+			  			  
 			  // extract row
 			  if (v.indexOf('--------------')>-1) {
 				  return 1;
 			  }
-			  obj.items.push(v.trim().replace(/  +/g, '≈Å').split('≈Å'));
+			  obj.items.push(v.trim().replace(/  +/g, '£').split('£'));
 			  return 0;  
 		  },
 		  
